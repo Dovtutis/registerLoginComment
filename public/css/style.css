@@ -14,3 +14,9 @@
     height: inherit;
     font-weight: 600;
 }
+
+/*REGISTRATION FORM*/
+
+#registration-container {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
