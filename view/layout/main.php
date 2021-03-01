@@ -36,7 +36,7 @@
     </div>
 </header>
 
-<div class="container">
+<div>
     {{content}}
 </div>
 
