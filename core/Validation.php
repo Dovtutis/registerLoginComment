@@ -54,6 +54,12 @@ class Validation
         return '';
     }
 
+    /**
+     * Validates confirm password field
+     *
+     * @param $field
+     * @return string
+     */
     public function confirmPassword($field)
     {
         if (empty($field)) return "Please repeat your password";
@@ -62,12 +68,24 @@ class Validation
         return '';
     }
 
+    /**
+     * Validate phone field
+     *
+     * @param $field
+     * @return string
+     */
     public function validatePhone($field)
     {
         if(preg_match("/^[^0-9]*$/", $field)) return "Only numbers allowed!";
         return '';
     }
 
+    /**
+     * Validates address field
+     *
+     * @param $field
+     * @return string
+     */
     public function validateAddress($field)
     {
         if (strlen($field)>=60) return "Maximum symbol count 60";
