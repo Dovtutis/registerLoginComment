@@ -29,7 +29,7 @@ class UserModel
     public function register($data)
     {
         $this->db->query("INSERT INTO users (`name`, `surname`, `email`, `password`, `phone`, `address`)
-            VALUES (:name, :surname, :email, :password, :phone, :password)");
+            VALUES (:name, :surname, :email, :password, :phone, :address)");
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':surname', $data['surname']);
         $this->db->bind(':email', $data['email']);
