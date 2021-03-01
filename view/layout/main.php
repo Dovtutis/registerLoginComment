@@ -16,21 +16,22 @@
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <header>
     <div class="nav-container">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse container" id="navbarNav">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="/">Home</a>
-                    <a class="nav-link" href="">Reviews</a>
-                </div>
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-link" href="/login">Login</a>
-                    <a class="nav-link" href="/register">Registration</a>
-                </div>
-                <div class="navbar-nav ml-auto">
-                    <a class="nav-link" href="/logout">Log Out</a>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-link active" href="/">Home</a>
+                        <a class="nav-link" href="#">Reviews</a>
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="#">Logout</a>
+                    </div>
+                    </ul>
                 </div>
             </div>
         </nav>

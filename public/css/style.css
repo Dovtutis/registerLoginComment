@@ -4,7 +4,7 @@
     height: 70px;
     width: 100%;
     margin: 0 auto;
-    background-color: #95a5a6;
+    background-color: #F8F9FA;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
@@ -12,6 +12,5 @@
     margin: 0 auto;
     width: 800px;
     height: inherit;
-    background-color: transparent !important;
     font-weight: 600;
 }
