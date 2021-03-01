@@ -81,8 +81,35 @@ class AuthController extends Controller
             $data['errors']['emailError'] = $this->validation->validateLoginEmail($data['email'], $this->userModel);
             $data['errors']['passwordError'] = $this->validation->validateEmpty($data['password'], 'Please Enter Your Password');
 
-            header('Content-Type: application/json');
-            echo json_encode($data);
+            if ($this->validation->ifEmptyArray($data['errors'])) {
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+                if ($loggedInUser) {
+                    $this->createUserSession($loggedInUser);
+                    $response = 'loginSuccessful';
+                    header('Content-Type: application/json');
+                    echo json_encode($response);
+                } else {
+                    $data['errors']['passwordError'] = "Wrong password";
+                    header('Content-Type: application/json');
+                    echo json_encode($data);
+                }
+            }else{
+                header('Content-Type: application/json');
+                echo json_encode($data);
+            }
+
         endif;
+    }
+
+    /**
+     * Stores user ID, user email and user name in SESSION
+     *
+     * @param $userRow
+     */
+    public function createUserSession($userRow)
+    {
+        $_SESSION['user_id'] = $userRow->id;
+        $_SESSION['user_email'] = $userRow->email;
+        $_SESSION['user_name'] = $userRow->name;
     }
 }
