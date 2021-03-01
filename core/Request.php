@@ -34,5 +34,33 @@ class Request
         return $path;
     }
 
+    /**
+     * Returns http request method - GET or POST
+     *
+     * @return string
+     */
+    public function method(): string
+    {
+        return strtolower($_SERVER['REQUEST_METHOD']);
+    }
 
+    /**
+     * Returns true if server method is GET
+     *
+     * @return bool
+     */
+    public function isGet() :bool
+    {
+        return $this->method() === 'get';
+    }
+
+    /**
+     * Returns true if server method is POST
+     *
+     * @return bool
+     */
+    public function isPost() :bool
+    {
+        return $this->method() === 'post';
+    }
 }
