@@ -62,4 +62,23 @@ class UserModel
             return false;
         }
     }
+
+    public function login($email, $password)
+    {
+        $this->db->query("SELECT * FROM users WHERE `email` = :email");
+        $this->db->bind(':email', $email);
+        $row = $this->db->singleRow();
+
+        if ($row){
+            $hashedPassword = $row->password;
+        }else{
+            return false;
+        }
+
+        if (password_verify($password, $hashedPassword)){
+            return $row;
+        }else {
+            return false;
+        }
+    }
 }
