@@ -21,6 +21,7 @@ class Application
     public Router $router;
     public Request $request;
     public static Application $app;
+    public Controller $controller;
 
     public function __construct($rootPath)
     {
@@ -36,5 +37,21 @@ class Application
         echo $this->router->resolve();
     }
 
+    /**
+     * Returns controller
+     * @return Controller
+     */
+    public function getController(): Controller
+    {
+        return $this->controller;
+    }
 
+    /**
+     * Sets controller
+     * @param Controller $controller
+     */
+    public function setController(Controller $controller): void
+    {
+        $this->controller = $controller;
+    }
 }
