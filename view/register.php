@@ -69,6 +69,8 @@
     const emailEl = document.getElementById('email');
     const passwordEl = document.getElementById('password');
     const confirmPasswordEl = document.getElementById('confirmPassword');
+    const phoneEl = document.getElementById('phone');
+    const addressEl = document.getElementById('address');
     const registerButton = document.getElementById('register-button');
     registrationFormEl.addEventListener('submit', registerFetch);
 
@@ -109,6 +111,14 @@
         if (errors.passwordConfirmError){
             confirmPasswordEl.classList.add('is-invalid');
             confirmPasswordEl.nextElementSibling.innerHTML = errors.passwordConfirmError;
+        }
+        if (errors.phoneError){
+            phoneEl.classList.add('is-invalid');
+            phoneEl.nextElementSibling.innerHTML = errors.phoneError;
+        }
+        if (errors.addressError){
+            addressEl.classList.add('is-invalid');
+            addressEl.nextElementSibling.innerHTML = errors.addressError;
         }
     }
 </script>

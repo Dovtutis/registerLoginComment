@@ -61,4 +61,16 @@ class Validation
         if ($field !== $this->password) return "Passwords must match";
         return '';
     }
+
+    public function validatePhone($field)
+    {
+        if(preg_match("/^[^0-9]*$/", $field)) return "Only numbers allowed!";
+        return '';
+    }
+
+    public function validateAddress($field)
+    {
+        if (strlen($field)>=60) return "Maximum symbol count 60";
+        return '';
+    }
 }
