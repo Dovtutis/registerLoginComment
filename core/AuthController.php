@@ -3,6 +3,8 @@
 
 namespace app\core;
 
+use app\model\UserModel;
+
 /**
  * Handles registration and login
  *
@@ -12,10 +14,12 @@ namespace app\core;
 class AuthController extends Controller
 {
     public Validation $validation;
+    protected UserModel $userModel;
 
     public function __construct()
     {
         $this->validation = new Validation();
+        $this->userModel = new UserModel();
     }
 
     /**
@@ -42,8 +46,19 @@ class AuthController extends Controller
             $data['errors']['phoneError'] = $this->validation->validatePhone($data['phone']);
             $data['errors']['addressError'] = $this->validation->validateAddress($data['address']);
 
-            header('Content-Type: application/json');
-            echo json_encode($data);
+            if ($this->validation->ifEmptyArray($data['errors'])) {
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                if ($this->userModel->register($data)) {
+                    $response = 'registrationSuccessful';
+                    header('Content-Type: application/json');
+                    echo json_encode($response);
+                } else {
+                    die('Something went wrong in adding user to DB');
+                }
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode($data);
+            }
         endif;
     }
 }
