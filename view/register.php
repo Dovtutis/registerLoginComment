@@ -67,6 +67,8 @@
     const nameEl = document.getElementById('name');
     const surNameEl = document.getElementById('surname');
     const emailEl = document.getElementById('email');
+    const passwordEl = document.getElementById('password');
+    const confirmPasswordEl = document.getElementById('confirmPassword');
     const registerButton = document.getElementById('register-button');
     registrationFormEl.addEventListener('submit', registerFetch);
 
@@ -87,7 +89,6 @@
     }
 
     function handleErrors(errors){
-        registerButton.setAttribute('disabled', '');
 
         if (errors.nameError){
             nameEl.classList.add('is-invalid');
@@ -100,6 +101,14 @@
         if (errors.emailError){
             emailEl.classList.add('is-invalid');
             emailEl.nextElementSibling.innerHTML = errors.emailError;
+        }
+        if (errors.passwordError){
+            passwordEl.classList.add('is-invalid');
+            passwordEl.nextElementSibling.innerHTML = errors.passwordError;
+        }
+        if (errors.passwordConfirmError){
+            confirmPasswordEl.classList.add('is-invalid');
+            confirmPasswordEl.nextElementSibling.innerHTML = errors.passwordConfirmError;
         }
     }
 </script>

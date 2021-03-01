@@ -34,9 +34,11 @@ class AuthController extends Controller
         if ($request->isPost()) :
             $data = $request->getBody();
 
-            $data['errors']['nameError'] = $this->validation->validateName($data['name']);
-            $data['errors']['surnameError'] = $this->validation->validateName($data['surname']);
+            $data['errors']['nameError'] = $this->validation->validateNameSurname($data['name']);
+            $data['errors']['surnameError'] = $this->validation->validateNameSurname($data['surname']);
             $data['errors']['emailError'] = $this->validation->validateEmail($data['email']);
+            $data['errors']['passwordError'] = $this->validation->validatePassword($data['password']);
+            $data['errors']['passwordConfirmError'] = $this->validation->confirmPassword($data['confirmPassword']);
 
             header('Content-Type: application/json');
             echo json_encode($data);
