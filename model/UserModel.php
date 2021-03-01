@@ -3,6 +3,7 @@
 
 namespace app\model;
 
+use app\core\Database;
 use app\core\Application;
 
 /**
@@ -18,6 +19,24 @@ class UserModel
     public function __construct()
     {
         $this->db = Application::$app->db;
+    }
+
+    /**
+     * Function for checking if email is already registered in the database.
+     *
+     * @param $email
+     * @return bool
+     */
+    public function findUserByEmail($email)
+    {
+        $this->db->query("SELECT * FROM users WHERE email = :email");
+        $this->db->bind(':email', $email);
+        $row = $this->db->singleRow();
+        if ($this->db->rowCount()>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**

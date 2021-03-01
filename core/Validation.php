@@ -42,10 +42,14 @@ class Validation
      * @param $field
      * @return string
      */
-    public function validateEmail($field)
+    public function validateEmail($field, &$userModel = null)
     {
         if (empty($field)) return "Please enter Your Email";
         if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Email is not correct, please use correct format";
+        if ($userModel !== null) :
+            if ($userModel->findUserByEmail($field)) return "Email already taken, use another email";
+        endif;
+
         return '';
     }
 
