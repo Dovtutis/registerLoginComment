@@ -31,9 +31,9 @@
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="form-group mt-2">
-                        <label for="confirmPassword">Confirm password: <sup>*</sup></label>
+                        <label for="password-confirm">Password Confirm: <sup>*</sup></label>
                         <input type="password" class="form-control form-control-lg"
-                               name="confirmPassword" id="confirmPassword" value="">
+                               name="passwordConfirm" id="passwordConfirm" value="">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="form-group mt-2">
@@ -68,7 +68,7 @@
     const surNameEl = document.getElementById('surname');
     const emailEl = document.getElementById('email');
     const passwordEl = document.getElementById('password');
-    const confirmPasswordEl = document.getElementById('confirmPassword');
+    const passwordConfirmEl = document.getElementById('passwordConfirm');
     const phoneEl = document.getElementById('phone');
     const addressEl = document.getElementById('address');
     const registerButton = document.getElementById('register-button');
@@ -76,6 +76,7 @@
 
     function registerFetch(e) {
         e.preventDefault();
+        resetErrors();
         const formData = new FormData(registrationFormEl);
 
         fetch('/register', {
@@ -112,8 +113,8 @@
             passwordEl.nextElementSibling.innerHTML = errors.passwordError;
         }
         if (errors.passwordConfirmError){
-            confirmPasswordEl.classList.add('is-invalid');
-            confirmPasswordEl.nextElementSibling.innerHTML = errors.passwordConfirmError;
+            passwordConfirmEl.classList.add('is-invalid');
+            passwordConfirmEl.nextElementSibling.innerHTML = errors.passwordConfirmError;
         }
         if (errors.phoneError){
             phoneEl.classList.add('is-invalid');
@@ -123,5 +124,12 @@
             addressEl.classList.add('is-invalid');
             addressEl.nextElementSibling.innerHTML = errors.addressError;
         }
+    }
+
+    function resetErrors(){
+        const errorEl = registrationFormEl.querySelectorAll('.is-invalid');
+        errorEl.forEach((element) => {
+            element.classList.remove('is-invalid');
+        });
     }
 </script>

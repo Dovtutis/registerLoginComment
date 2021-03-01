@@ -40,9 +40,9 @@ class AuthController extends Controller
 
             $data['errors']['nameError'] = $this->validation->validateNameSurname($data['name']);
             $data['errors']['surnameError'] = $this->validation->validateNameSurname($data['surname']);
-            $data['errors']['emailError'] = $this->validation->validateEmail($data['email']);
+            $data['errors']['emailError'] = $this->validation->validateEmail($data['email'], $this->userModel);
             $data['errors']['passwordError'] = $this->validation->validatePassword($data['password']);
-            $data['errors']['passwordConfirmError'] = $this->validation->confirmPassword($data['confirmPassword']);
+            $data['errors']['passwordConfirmError'] = $this->validation->confirmPassword($data['passwordConfirm']);
             $data['errors']['phoneError'] = $this->validation->validatePhone($data['phone']);
             $data['errors']['addressError'] = $this->validation->validateAddress($data['address']);
 
