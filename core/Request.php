@@ -63,4 +63,28 @@ class Request
     {
         return $this->method() === 'post';
     }
+
+    /**
+     * Sanitizes POST and GET arrays by using HTML special chars
+     *
+     * @return array
+     */
+    public function getBody()
+    {
+        $body = [];
+
+        if ($this->isPost()) :
+            foreach ($_POST as $key => $value) :
+                $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            endforeach;
+        endif;
+
+        if ($this->isGet()) :
+            foreach ($_GET as $key => $value) :
+                $body[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+            endforeach;
+        endif;
+
+        return $body;
+    }
 }
