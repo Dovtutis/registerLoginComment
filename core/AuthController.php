@@ -76,7 +76,13 @@ class AuthController extends Controller
         endif;
 
         if ($request->isPost()) :
+            $data = $request->getBody();
 
+            $data['errors']['emailError'] = $this->validation->validateLoginEmail($data['email'], $this->userModel);
+            $data['errors']['passwordError'] = $this->validation->validateEmpty($data['password'], 'Please Enter Your Password');
+
+            header('Content-Type: application/json');
+            echo json_encode($data);
         endif;
     }
 }

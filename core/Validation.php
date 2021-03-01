@@ -22,6 +22,18 @@ class Validation
     }
 
     /**
+     * Checks if given field is empty. Returns given message if empty.
+     *
+     * @param string $field
+     * @param string $msg
+     * @return string
+     */
+    public function validateEmpty($field, string $msg)
+    {
+        return empty($field) ? $msg : '';
+    }
+
+    /**
      * Validates Name or Surname field
      *
      * @param $field
@@ -72,7 +84,7 @@ class Validation
     }
 
     /**
-     * Validates confirm password field
+     * Validates confirm password field.
      *
      * @param $field
      * @return string
@@ -86,7 +98,7 @@ class Validation
     }
 
     /**
-     * Validate phone field
+     * Validate phone field.
      *
      * @param $field
      * @return string
@@ -98,7 +110,7 @@ class Validation
     }
 
     /**
-     * Validates address field
+     * Validates address field.
      *
      * @param $field
      * @return string
@@ -106,6 +118,21 @@ class Validation
     public function validateAddress($field)
     {
         if (strlen($field)>=60) return "Maximum symbol count 60";
+        return '';
+    }
+
+    /**
+     * Validates login email field.
+     *
+     * @param $field
+     * @param $userModel
+     * @return string
+     */
+    public function validateLoginEmail($field, &$userModel)
+    {
+        if (empty($field)) return "Please enter Your Email";
+        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Email is not correct, please use correct format";
+        if (!$userModel->findUserByEmail($field)) return "Email not found";
         return '';
     }
 }
