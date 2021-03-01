@@ -72,7 +72,16 @@ class AuthController extends Controller
     {
 
         if ($request->isGet()) :
-            return $this->render('login');
+            if (\app\core\Session::isUserLoggedIn()){
+                $params = [
+                    'name' => "Sporto Klubas",
+                    'currentPage' => "home"
+                ];
+                return $this->render('index', $params);
+            }else{
+                return $this->render('login');
+            }
+
         endif;
 
         if ($request->isPost()) :
@@ -111,5 +120,19 @@ class AuthController extends Controller
         $_SESSION['user_id'] = $userRow->id;
         $_SESSION['user_email'] = $userRow->email;
         $_SESSION['user_name'] = $userRow->name;
+    }
+
+    public function logout(Request $request)
+    {
+        if (\app\core\Session::isUserLoggedIn()){
+            unset($_SESSION['user_id']);
+            unset($_SESSION['user_email']);
+            unset($_SESSION['user_name']);
+
+            session_destroy();
+            $request->redirect('/');
+        }else{
+            $request->redirect('/');
+        }
     }
 }
