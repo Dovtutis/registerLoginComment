@@ -113,4 +113,40 @@ class Router
         echo call_user_func($callback, $this->request, $urlParam ?? null);
     }
 
+    /**
+     * Renders the page and applies the layout
+     *
+     * @param string $view
+     * @return string|string[]
+     */
+
+    public function renderView(string $view, array $params = [])
+    {
+        $layout = $this->layoutContent();;
+        $page;
+
+        // take layout and replace the {{content}} with the $page content
+        return str_replace('{{content}}', $page, $layout);
+    }
+
+    /**
+     * Returns the layout HTML content
+     *
+     * @return false|string
+     */
+
+    protected function layoutContent()
+    {
+        if (isset(Application::$app->controller)):
+            $layout = Application::$app->controller->layout;
+        else:
+            $layout = 'main';
+        endif;
+        // start buffering
+        ob_start();
+        include_once Application::$ROOT_DIR."/view/layout/$layout.php";
+        // stop and return buffering
+        return ob_get_clean();
+    }
+
 }
