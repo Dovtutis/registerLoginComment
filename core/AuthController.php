@@ -36,6 +36,7 @@ class AuthController extends Controller
 
             $data['errors']['nameError'] = $this->validation->validateName($data['name']);
             $data['errors']['surnameError'] = $this->validation->validateName($data['surname']);
+            $data['errors']['emailError'] = $this->validation->validateEmail($data['email']);
 
             header('Content-Type: application/json');
             echo json_encode($data);

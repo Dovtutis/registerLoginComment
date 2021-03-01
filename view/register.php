@@ -1,12 +1,11 @@
 <?php ?>
 
-<form autocomplete="off" action="" method="post" id="registration-form">
     <div class="row">
         <div class="col-lg-6 mx-auto">
             <div class="card card-body bd-light mt-5" id="registration-container">
                 <h2>Create an account</h2>
                 <p>Please fill in the form to register with us</p>
-                <form action="" method="post" autocomplete="off">
+                <form action="" method="post" autocomplete="off" id="registration-form">
                     <div class="form-group">
                         <label for="name">Name: <sup>*</sup></label>
                         <input type="text" class="form-control form-control-lg"
@@ -51,7 +50,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <input type="submit" class="btn btn-primary btn-block" value="Register">
+                            <input type="submit" class="btn btn-primary btn-block" value="Register" id="register-button">
                         </div>
                         <div class="col">
                             <a href="/login" class="btn btn-light btn-block float-right">Have an account? Login</a>
@@ -61,4 +60,46 @@
             </div>
         </div>
     </div>
-</form>
+
+
+<script>
+    const registrationFormEl = document.getElementById('registration-form');
+    const nameEl = document.getElementById('name');
+    const surNameEl = document.getElementById('surname');
+    const emailEl = document.getElementById('email');
+    const registerButton = document.getElementById('register-button');
+    registrationFormEl.addEventListener('submit', registerFetch);
+
+    function registerFetch(e) {
+        e.preventDefault();
+        const formData = new FormData(registrationFormEl);
+
+        fetch('/register', {
+            method: 'post',
+            body: formData
+        }).then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+                if (data.errors){
+                    handleErrors(data.errors);
+                }
+            }).catch(error => console.error())
+    }
+
+    function handleErrors(errors){
+        registerButton.setAttribute('disabled', '');
+
+        if (errors.nameError){
+            nameEl.classList.add('is-invalid');
+            nameEl.nextElementSibling.innerHTML = errors.nameError;
+        }
+        if (errors.surnameError){
+            surNameEl.classList.add('is-invalid');
+            surNameEl.nextElementSibling.innerHTML = errors.surnameError;
+        }
+        if (errors.emailError){
+            emailEl.classList.add('is-invalid');
+            emailEl.nextElementSibling.innerHTML = errors.emailError;
+        }
+    }
+</script>

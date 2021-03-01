@@ -23,4 +23,11 @@ class Validation
         if (strlen($field)>40) return "Max symbol count 40";
         return '';
     }
+
+    public function validateEmail($field)
+    {
+        if (empty($field)) return "Please enter Your Email";
+        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Email is not correct, please use correct format";
+        return '';
+    }
 }
