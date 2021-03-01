@@ -31,10 +31,12 @@ class Router
 
     protected array $routes = [];
     public Request $request;
+    public Response $response;
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -84,10 +86,28 @@ class Router
 
             $callback = $this->routes[$method][$path] ?? false;
 
+            if (!isset($urlParam['value'])) :
+                $this->response->setResponseCode(404);
+                // We will render the view
+            endif;
+
         endif;
 
         if (is_string($callback)) :
             // We will render the view
+        endif;
+
+        // if our callback is array we handle it with class instance
+        if (is_array($callback)) :
+            $instance = new $callback[0];
+            Application::$app->controller = $instance;
+            $callback[0] = Application::$app->controller;
+
+            // Check if we have url arguments in callback array
+            if (isset($callback['urlParamName'])) :
+                $urlParam['name'] = $callback['urlParamName'];
+                array_splice($callback, 2, 1);
+            endif;
         endif;
 
         echo call_user_func($callback, $this->request, $urlParam ?? null);
