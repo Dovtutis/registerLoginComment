@@ -48,6 +48,13 @@ class Router
 
     public function get($path, $callback)
     {
+        if (strpos($path, '{')):
+            $startPos = strpos($path, '{');
+            $endPos = strpos($path, '}');
+            $argName = substr($path, $startPos + 1, $endPos - $startPos -1);
+            $callback['urlParamName'] = $argName;
+            $path = substr($path, 0, $startPos-1);
+    endif;
         $this->routes['get'][$path] = $callback;
     }
 
@@ -59,6 +66,13 @@ class Router
      */
     public function post($path, $callback)
     {
+        if (strpos($path, '{')):
+            $startPos = strpos($path, '{');
+            $endPos = strpos($path, '}');
+            $argName = substr($path, $startPos + 1, $endPos - $startPos -1);
+            $callback['urlParamName'] = $argName;
+            $path = substr($path, 0, $startPos-1);
+        endif;
         $this->routes['post'][$path] = $callback;
     }
 
@@ -88,13 +102,13 @@ class Router
 
             if (!isset($urlParam['value'])) :
                 $this->response->setResponseCode(404);
-                // We will render the view
+                return $this->renderView('_404');
             endif;
 
         endif;
 
         if (is_string($callback)) :
-            // We will render the view
+            return $this->renderView($callback);
         endif;
 
         // if our callback is array we handle it with class instance
