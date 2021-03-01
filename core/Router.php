@@ -123,7 +123,7 @@ class Router
     public function renderView(string $view, array $params = [])
     {
         $layout = $this->layoutContent();;
-        $page;
+        $page = $this->pageContent($view, $params);
 
         // take layout and replace the {{content}} with the $page content
         return str_replace('{{content}}', $page, $layout);
@@ -146,6 +146,24 @@ class Router
         ob_start();
         include_once Application::$ROOT_DIR."/view/layout/$layout.php";
         // stop and return buffering
+        return ob_get_clean();
+    }
+
+    /**
+     * Returns only the given page HTML content
+     *
+     * @param $view
+     * @return false|string
+     */
+
+    protected function pageContent($view, $params)
+    {
+        foreach ($params as $key => $value):
+            $$key = $value;
+        endforeach;
+
+        ob_start();
+        include_once Application::$ROOT_DIR."/view/$view.php";
         return ob_get_clean();
     }
 
