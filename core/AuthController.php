@@ -31,7 +31,6 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         if ($request->isGet()) :
-
             return $this->render('register');
         endif;
 
@@ -59,6 +58,25 @@ class AuthController extends Controller
                 header('Content-Type: application/json');
                 echo json_encode($data);
             }
+        endif;
+    }
+
+
+    /**
+     * This function handles user login GET and POST requests
+     * @param Request $request
+     * @return string|string[]
+     */
+
+    public function login(Request $request)
+    {
+
+        if ($request->isGet()) :
+            return $this->render('login');
+        endif;
+
+        if ($request->isPost()) :
+
         endif;
     }
 }
