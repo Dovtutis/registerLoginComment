@@ -9,6 +9,19 @@ class Validation
     private $password;
 
     /**
+     * Checks if every array value is empty
+     * @param array $arr
+     * @return bool
+     */
+    public function ifEmptyArray($arr)
+    {
+        foreach ($arr as $value){
+            if (!empty($value)) return false;
+        }
+        return true;
+    }
+
+    /**
      * Validates Name or Surname field
      *
      * @param $field
@@ -76,7 +89,7 @@ class Validation
      */
     public function validatePhone($field)
     {
-        if(preg_match("/^[^0-9]*$/", $field)) return "Only numbers allowed!";
+        if(strlen($field)>0 && preg_match("/^[^0-9]*$/", $field)) return "Only numbers allowed!";
         return '';
     }
 
