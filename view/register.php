@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-lg-6 mx-auto">
-            <div class="card card-body bd-light mt-5" id="registration-container">
+            <div class="card card-body bd-light mt-5 p-4" id="registration-container">
                 <h2>Create an account</h2>
                 <p>Please fill in the form to register with us</p>
                 <form action="" method="post" autocomplete="off" id="registration-form">
@@ -72,6 +72,8 @@
     const phoneEl = document.getElementById('phone');
     const addressEl = document.getElementById('address');
     const registerButton = document.getElementById('register-button');
+    // const elementsArray = [nameEl, surNameEl, emailEl, passwordEl, passwordConfirmEl, phoneEl, addressEl];
+    // const errorsElement = [errors.nameError, errors.surnameError, errors.passwordError, errors.passwordConfirmError, errors.phoneError, errors.addressError]
     registrationFormEl.addEventListener('submit', registerFetch);
 
     function registerFetch(e) {

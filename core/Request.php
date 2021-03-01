@@ -93,7 +93,6 @@ class Request
      *
      * @param string $whereTo;
      */
-
     public function redirect ($whereTo)
     {
         header("Location: $whereTo");
