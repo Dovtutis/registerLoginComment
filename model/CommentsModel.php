@@ -23,7 +23,8 @@ class CommentsModel
 
     public function getComments()
     {
-        $this->db->query('SELECT * FROM comments ORDER BY created_at DESC');
+        $this->db->query('SELECT comments.body, comments.created_at, users.name FROM comments INNER JOIN users
+        ON comments.user_id = users.id  ORDER BY created_at DESC');
         $comments = $this->db->resultSet();
 
         if ($this->db->rowCount() > 0){
