@@ -135,4 +135,16 @@ class Validation
         if (!$userModel->findUserByEmail($field)) return "Email not found";
         return '';
     }
+
+    /**
+     * Validates comentar length.
+     *
+     * @param $field
+     * @return string
+     */
+    public function bodyLength($field)
+    {
+        if (strlen($field)>500) return "Max characters count 500!";
+        return '';
+    }
 }
