@@ -52,15 +52,16 @@
 
 <script>
     const commentsTable = document.getElementById('comments-table');
-    const addCommentFormEl = document.getElementById('add-comment-form');
     const nameEl = document.getElementById('name');
     const bodyEl = document.getElementById('body');
     let errorsAndElements = {
         nameError: nameEl,
         bodyError: bodyEl,
     };
-
-    addCommentFormEl.addEventListener('submit', addCommentAsync);
+    if (sessionStorage.getItem("user_name")){
+        const addCommentFormEl = document.getElementById('add-comment-form');
+        addCommentFormEl.addEventListener('submit', addCommentAsync);
+    }
 
     fetchComments();
 
