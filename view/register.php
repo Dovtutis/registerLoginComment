@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-lg-6 mx-auto">
-            <div class="card card-body bd-light mt-5 p-4" id="registration-container">
+            <div class="card card-body bd-light mt-5 p-4 container800" id="registration-container">
                 <h2>Create an account</h2>
                 <p>Please fill in the form to register with us</p>
                 <form action="" method="post" autocomplete="off" id="registration-form">
@@ -48,12 +48,12 @@
                                name="address" id="address" value="">
                         <span class="invalid-feedback"></span>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row mt-3 d-flex">
                         <div class="col">
                             <input type="submit" class="btn btn-primary btn-block" value="Register" id="register-button">
                         </div>
                         <div class="col">
-                            <a href="/login" class="btn btn-light btn-block float-right">Have an account? Login</a>
+                            <a href="/login" class="btn btn-light btn-block float-end">Have an account? Login</a>
                         </div>
                     </div>
                 </form>
@@ -72,8 +72,15 @@
     const phoneEl = document.getElementById('phone');
     const addressEl = document.getElementById('address');
     const registerButton = document.getElementById('register-button');
-    // const elementsArray = [nameEl, surNameEl, emailEl, passwordEl, passwordConfirmEl, phoneEl, addressEl];
-    // const errorsElement = [errors.nameError, errors.surnameError, errors.passwordError, errors.passwordConfirmError, errors.phoneError, errors.addressError]
+    let errorsAndElements = {
+        nameError: nameEl,
+        surnameError: surNameEl,
+        emailError: emailEl,
+        passwordError: passwordEl,
+        passwordConfirmError: passwordConfirmEl,
+        phoneError: phoneEl,
+        addressError: addressEl
+    };
     registrationFormEl.addEventListener('submit', registerFetch);
 
     function registerFetch(e) {
@@ -97,34 +104,14 @@
     }
 
     function handleErrors(errors){
-
-        if (errors.nameError){
-            nameEl.classList.add('is-invalid');
-            nameEl.nextElementSibling.innerHTML = errors.nameError;
-        }
-        if (errors.surnameError){
-            surNameEl.classList.add('is-invalid');
-            surNameEl.nextElementSibling.innerHTML = errors.surnameError;
-        }
-        if (errors.emailError){
-            emailEl.classList.add('is-invalid');
-            emailEl.nextElementSibling.innerHTML = errors.emailError;
-        }
-        if (errors.passwordError){
-            passwordEl.classList.add('is-invalid');
-            passwordEl.nextElementSibling.innerHTML = errors.passwordError;
-        }
-        if (errors.passwordConfirmError){
-            passwordConfirmEl.classList.add('is-invalid');
-            passwordConfirmEl.nextElementSibling.innerHTML = errors.passwordConfirmError;
-        }
-        if (errors.phoneError){
-            phoneEl.classList.add('is-invalid');
-            phoneEl.nextElementSibling.innerHTML = errors.phoneError;
-        }
-        if (errors.addressError){
-            addressEl.classList.add('is-invalid');
-            addressEl.nextElementSibling.innerHTML = errors.addressError;
+        let possibleErrors = Object.keys(errorsAndElements);
+        for (let i = 0; i < possibleErrors.length; i++) {
+            let errorName = possibleErrors[i];
+            if (errors[errorName]) {
+                let errorElement = errorsAndElements[errorName];
+                errorElement.classList.add('is-invalid');
+                errorElement.nextElementSibling.innerHTML = errors[errorName];
+            }
         }
     }
 

@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-lg-6 mx-auto">
-        <div class="card card-body bd-light mt-5 p-4" id="login-container">
+        <div class="card card-body bd-light mt-5 p-4 container800" id="login-container">
             <h2>Login</h2>
             <form action="" method="post" autocomplete="off" id="login-form">
                 <div class="form-group mt-1">
@@ -23,7 +23,7 @@
                         <input type="submit" value="Login" class="btn btn-primary btn-block">
                     </div>
                     <div class="col">
-                        <a href="/register" class="btn btn-light btn-block float-right">No account? Register</a>
+                        <a href="/register" class="btn btn-light btn-block float-end">No account? Register</a>
                     </div>
                 </div>
             </form>
@@ -35,6 +35,10 @@
     const loginFormEl = document.getElementById('login-form');
     const emailEl = document.getElementById('email');
     const passwordEl = document.getElementById('password');
+    let errorsAndElements = {
+        emailError: emailEl,
+        passwordError: passwordEl,
+    };
 
     loginFormEl.addEventListener('submit', loginFetch);
 
@@ -59,14 +63,14 @@
     }
 
     function handleErrors(errors){
-
-        if (errors.emailError){
-            emailEl.classList.add('is-invalid');
-            emailEl.nextElementSibling.innerHTML = errors.emailError;
-        }
-        if (errors.passwordError){
-            passwordEl.classList.add('is-invalid');
-            passwordEl.nextElementSibling.innerHTML = errors.passwordError;
+        let possibleErrors = Object.keys(errorsAndElements);
+        for (let i = 0; i < possibleErrors.length; i++) {
+            let errorName = possibleErrors[i];
+            if (errors[errorName]) {
+                let errorElement = errorsAndElements[errorName];
+                errorElement.classList.add('is-invalid');
+                errorElement.nextElementSibling.innerHTML = errors[errorName];
+            }
         }
     }
 
