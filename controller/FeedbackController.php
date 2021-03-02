@@ -52,12 +52,18 @@ class FeedbackController extends Controller
         echo json_encode($comments);
     }
 
+    /**
+     * Function which validates inputs from comment form and sends request to the comments model for comment add.
+     *
+     * @param Request $request
+     */
     public function addComment (Request $request)
     {
         $data = $request->getBody();
 
         $data['errors']['nameError'] = $this->validation->validateEmpty($data['name'], 'Name cant be empty');
         $data['errors']['bodyError'] = $this->validation->validateEmpty($data['body'], 'Please enter your comment');
+        $data['errors']['bodyError'] = $this->validation->bodyLength($data['body']);
 
         if ($this->validation->ifEmptyArray($data['errors'])) {
             $data['user_id'] = $_SESSION['user_id'];
