@@ -49,17 +49,25 @@
         </div>
     </div>
 </main>
+<footer>
+    <div id="feedback-footer-container">
+        © 2021. Dovydas Tutinas, all rights reserved.
+    </div>
+</footer>
 
 <script>
     const commentsTable = document.getElementById('comments-table');
     const nameEl = document.getElementById('name');
     const bodyEl = document.getElementById('body');
+    let addCommentFormEl;
+    const sessionTrigger = "<?php echo $_SESSION['user_name'] ?? '';?>"
     let errorsAndElements = {
         nameError: nameEl,
         bodyError: bodyEl,
     };
-    if (sessionStorage.getItem("user_name")){
-        const addCommentFormEl = document.getElementById('add-comment-form');
+
+    if (sessionTrigger !== ""){
+        addCommentFormEl = document.getElementById('add-comment-form');
         addCommentFormEl.addEventListener('submit', addCommentAsync);
     }
 

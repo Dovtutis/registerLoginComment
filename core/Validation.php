@@ -142,8 +142,9 @@ class Validation
      * @param $field
      * @return string
      */
-    public function bodyLength($field)
+    public function validateBody($field)
     {
+        if (empty($field)) return "Comment cannot be empty";
         if (strlen($field)>500) return "Max characters count 500!";
         return '';
     }

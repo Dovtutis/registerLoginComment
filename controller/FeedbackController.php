@@ -62,8 +62,7 @@ class FeedbackController extends Controller
         $data = $request->getBody();
 
         $data['errors']['nameError'] = $this->validation->validateEmpty($data['name'], 'Name cant be empty');
-        $data['errors']['bodyError'] = $this->validation->validateEmpty($data['body'], 'Please enter your comment');
-        $data['errors']['bodyError'] = $this->validation->bodyLength($data['body']);
+        $data['errors']['bodyError'] = $this->validation->validateBody($data['body']);
 
         if ($this->validation->ifEmptyArray($data['errors'])) {
             $data['user_id'] = $_SESSION['user_id'];
@@ -78,5 +77,8 @@ class FeedbackController extends Controller
             header('Content-Type: application/json');
             echo json_encode($data);
         }
+
+//            header('Content-Type: application/json');
+//            echo json_encode($data);
     }
 }

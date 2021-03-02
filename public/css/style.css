@@ -93,10 +93,6 @@
 
 /*FEEDBACK*/
 
-#feedback-container {
-
-}
-
 #feedback-comments-container {
     width: 100%;
     height: 400px;
@@ -105,6 +101,7 @@
     background-color: #F8F9FA;
     padding: 20px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    overflow: auto;
 }
 
 #comments-input-container {
@@ -119,6 +116,17 @@
 
 #feedback-log-in-message {
     font-size: 18px;
+}
+
+#feedback-footer-container {
+    height: 70px;
+    width: 100%;
+    background-color: #F8F9FA;
+    text-align: center;
+    line-height: 70px;
+    align-self: end;
+    position: absolute;
+    bottom: 0;
 }
 
 @media only screen and (max-width: 991px) {
