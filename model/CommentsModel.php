@@ -37,4 +37,17 @@ class CommentsModel
         }
         return false;
     }
+
+    public function addComment($data)
+    {
+        $this->db->query("INSERT INTO comments (user_id, body) VALUES (:user_id, :body)");
+        $this->db->bind(':user_id', $data['user_id']);
+        $this->db->bind(':body', $data['body']);
+
+        if ($this->db->execute()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
