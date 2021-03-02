@@ -22,4 +22,8 @@ class SiteController extends Controller
         return $this->render('index', $params);
     }
 
+    public function notFound()
+    {
+        return $this->render('_404');
+    }
 }

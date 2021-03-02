@@ -41,10 +41,10 @@ class Validation
      */
     public function validateNameSurname($field)
     {
-        if (empty($field)) return "Please enter your Name";
-        if (!preg_match("/^[a-z ,.'-ĄČĘĖĮŠŲŪŽ]+$/i", $field)) return "Name must only contain Name characters";
-        if (preg_match('/[0-9]+/', $field)) return "Name must contain only letters";
-        if (strlen($field)>40) return "Max symbol count 40";
+        if (empty($field)) return "Field Cannot Be Empty";
+        if (!preg_match("/^[a-z ,.'-ĄČĘĖĮŠŲŪŽ]+$/i", $field)) return "Field Must Contain Only Letters";
+        if (preg_match('/[0-9]+/', $field)) return "Numbers Are Not Allowed";
+        if (strlen($field)>40) return "Max Symbol Count 40";
         return '';
     }
 
@@ -57,9 +57,9 @@ class Validation
     public function validateEmail($field, &$userModel = null)
     {
         if (empty($field)) return "Please enter Your Email";
-        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Email is not correct, please use correct format";
+        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Email Is Not Correct, Please Use Correct Format";
         if ($userModel !== null) :
-            if ($userModel->findUserByEmail($field)) return "Email already taken, use another email";
+            if ($userModel->findUserByEmail($field)) return "Email Already Taken, Use Another Email";
         endif;
 
         return '';
@@ -73,12 +73,12 @@ class Validation
      */
     public function validatePassword($field)
     {
-        if (empty($field)) return "Please enter Your Password";
-        if (strlen($field) < 6) return "Password must be minimum 6 characters long";
-        if (strlen($field) > 40) return "Password must be maximum 40 characters long";
-        if(!preg_match("#[0-9]+#", $field)) return "Password must include at least one number!";
-        if(!preg_match("#[a-z]+#", $field)) return "Password must include at least one letter!";
-        if(!preg_match("#[A-Z]+#", $field)) return "Password must include at least one capital letter!";
+        if (empty($field)) return "Please Enter Your Password";
+        if (strlen($field) < 6) return "Password Must Be Minimum 6 Characters Long";
+        if (strlen($field) > 40) return "Password Must Be Maximum 40 Characters Long";
+        if(!preg_match("#[0-9]+#", $field)) return "Password Must Include At Least One Number!";
+        if(!preg_match("#[a-z]+#", $field)) return "Password Must Include At Least One Letter!";
+        if(!preg_match("#[A-Z]+#", $field)) return "Password Must Include At Least One Capital Letter!";
         $this->password = $field;
         return '';
     }
@@ -91,9 +91,9 @@ class Validation
      */
     public function confirmPassword($field)
     {
-        if (empty($field)) return "Please repeat your password";
-        if (!$this->password) return "No password found";
-        if ($field !== $this->password) return "Passwords must match";
+        if (empty($field)) return "Please Repeat Your Password";
+        if (!$this->password) return "No Password Found";
+        if ($field !== $this->password) return "Passwords Must Match";
         return '';
     }
 
@@ -105,7 +105,7 @@ class Validation
      */
     public function validatePhone($field)
     {
-        if(strlen($field)>0 && preg_match("/^[^0-9]*$/", $field)) return "Only numbers allowed!";
+        if(strlen($field)>0 && preg_match("/^[^0-9]*$/", $field)) return "Only Numbers Allowed!";
         return '';
     }
 
@@ -117,7 +117,7 @@ class Validation
      */
     public function validateAddress($field)
     {
-        if (strlen($field)>=60) return "Maximum symbol count 60";
+        if (strlen($field)>=60) return "Maximum Symbol Count 60";
         return '';
     }
 
@@ -130,9 +130,9 @@ class Validation
      */
     public function validateLoginEmail($field, &$userModel)
     {
-        if (empty($field)) return "Please enter Your Email";
-        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Email is not correct, please use correct format";
-        if (!$userModel->findUserByEmail($field)) return "Email not found";
+        if (empty($field)) return "Please Enter Your Email";
+        if (filter_var($field, FILTER_VALIDATE_EMAIL) === false) return "Email Is Not Correct, Please Use Correct Format";
+        if (!$userModel->findUserByEmail($field)) return "Email Not Found";
         return '';
     }
 
@@ -144,8 +144,8 @@ class Validation
      */
     public function validateBody($field)
     {
-        if (empty($field)) return "Comment cannot be empty";
-        if (strlen($field)>500) return "Max characters count 500!";
+        if (empty($field)) return "Comment Cannot Be Empty";
+        if (strlen($field)>500) return "Max Characters Count 500!";
         return '';
     }
 }

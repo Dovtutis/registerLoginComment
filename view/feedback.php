@@ -3,7 +3,7 @@
     <div class="container800" id="feedback-container">
         <div id="feedback-comments-container">
             <div class="col-12">
-                <h4 class="my-2">Comments</h4>
+                <h4 class="my-2">Feedback from our customers</h4>
                 <div id="comments" class="comment-container">
                     <table class="table table-borderless">
                         <thead>
@@ -74,8 +74,9 @@
     fetchComments();
 
     function fetchComments(){
-        fetch('/feedback/getComments')
-            .then(resp => resp.json())
+        fetch('/feedback/getComments', {
+            method: 'post',
+    }).then(resp => resp.json())
             .then(data => {
                 generateComments(data)
             })
