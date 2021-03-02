@@ -15,6 +15,11 @@
     font-weight: 600;
 }
 
+.container800 {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 /*REGISTRATION FORM*/
 
 #registration-container {
@@ -23,4 +28,97 @@
 
 #login-container {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+/*MAIN PAGE*/
+
+#main-page-image-container {
+    background-image: url("../assets/main-page-cover-photo.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+}
+
+#services-container {
+    width: 100%;
+    margin: 20px 0;
+    background-color: #ececec;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.service-card {
+    width: 25%;
+    height: 300px;
+    min-width: 130px;
+    border: 1px solid #d3d3d3;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    background-color: #f5f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-card img {
+    height: 40%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.service-card h4 {
+    margin: 10px 0;
+}
+
+.service-card p {
+    font-size: 14px;
+    text-align: justify;
+    margin: 0 5px;
+}
+
+#index-map-container {
+    height: 300px;
+    width: 100%;
+}
+
+#index-footer-container {
+    height: 70px;
+    width: 100%;
+    background-color: #F8F9FA;
+    text-align: center;
+    line-height: 70px;
+}
+
+@media only screen and (max-width: 700px) {
+    .service-card p {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #main-page-image-container {
+        height: 150px;
+    }
+
+    #services-container {
+        flex-direction: column;
+        margin: 15px;
+    }
+
+    .service-card {
+        margin: 10px auto;
+        width: 200px;
+    }
+
+    .service-card p {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    #services-container {
+        height: 400px;
+    }
 }

@@ -30,14 +30,13 @@
                         <a class="nav-link" href="/login">Login</a>
                         <a class="nav-link" href="/logout">Logout</a>
                     </div>
-                    </ul>
                 </div>
             </div>
         </nav>
     </div>
 </header>
 
-<div class="container">
+<div>
     {{content}}
 </div>
 
