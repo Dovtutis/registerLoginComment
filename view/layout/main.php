@@ -1,4 +1,4 @@
-<?php ?>
+<?php;?>
 
 <!doctype html>
 <html lang="en">
@@ -22,12 +22,12 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-link" href="/">Home</a>
-                        <a class="nav-link" href="/feedback">Feedback</a>
+                        <a class="nav-link" href="/" id="nav-home">Home</a>
+                        <a class="nav-link" href="/feedback" id="nav-feedback">Feedback</a>
                     </div>
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link" href="/register">Register</a>
-                        <a class="nav-link" href="/login">Login</a>
+                        <a class="nav-link" href="/register" id="nav-register">Register</a>
+                        <a class="nav-link" href="/login" id="nav-login">Login</a>
                         <a class="nav-link" href="/logout">Logout</a>
                     </div>
                 </div>

@@ -40,7 +40,7 @@
                 </div>
             <?php else:?>
                 <p id="feedback-log-in-message">
-                    Want to comment? <a href="/register">Register</a>
+                    Want to comment? <a href="/register">Register</a> or <a href="/login">Login</a>
                 </p>
                 <div class="form-group mt-2">
                     <textarea name="body" id="body" class="form-control" disabled placeholder="Add comment. Maximum 500 chars."></textarea>
@@ -123,5 +123,15 @@
         errorEl.forEach((element) => {
             element.classList.remove('is-invalid');
         });
+    }
+
+    const currentPage = "<?php echo $currentPage?>";
+    const navBarActiveEl = document.getElementById('nav-feedback');
+    checkCurrentPage();
+
+    function checkCurrentPage() {
+        if (currentPage === "feedback"){
+            navBarActiveEl.classList.add('active');
+        }
     }
 </script>

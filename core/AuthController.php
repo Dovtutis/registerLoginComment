@@ -31,7 +31,10 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         if ($request->isGet()) :
-            return $this->render('register');
+            $params = [
+                'currentPage' => "register"
+            ];
+            return $this->render('register', $params);
         endif;
 
         if ($request->isPost()) :
@@ -73,12 +76,14 @@ class AuthController extends Controller
         if ($request->isGet()) :
             if (\app\core\Session::isUserLoggedIn()){
                 $params = [
-                    'name' => "Sporto Klubas",
                     'currentPage' => "home"
                 ];
                 return $this->render('index', $params);
             }else{
-                return $this->render('login');
+                $params = [
+                    'currentPage' => "login"
+                ];
+                return $this->render('login', $params);
             }
 
         endif;

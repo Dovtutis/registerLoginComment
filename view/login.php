@@ -80,4 +80,14 @@
             element.classList.remove('is-invalid');
         });
     }
+
+    const currentPage = "<?php echo $currentPage?>";
+    const navBarActiveEl = document.getElementById('nav-login');
+    checkCurrentPage();
+
+    function checkCurrentPage() {
+        if (currentPage === "login"){
+            navBarActiveEl.classList.add('active');
+        }
+    }
 </script>

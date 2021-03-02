@@ -121,4 +121,14 @@
             element.classList.remove('is-invalid');
         });
     }
+
+    const currentPage = "<?php echo $currentPage?>";
+    const navBarActiveEl = document.getElementById('nav-register');
+    checkCurrentPage();
+
+    function checkCurrentPage() {
+        if (currentPage === "register"){
+            navBarActiveEl.classList.add('active');
+        }
+    }
 </script>

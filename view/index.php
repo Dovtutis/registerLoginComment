@@ -49,4 +49,13 @@
             map: map,
         });
     }
+    const currentPage = "<?php echo $currentPage?>";
+    const navBarActiveEl = document.getElementById('nav-home');
+    checkCurrentPage();
+
+    function checkCurrentPage() {
+        if (currentPage === "home"){
+            navBarActiveEl.classList.add('active');
+        }
+    }
 </script>
