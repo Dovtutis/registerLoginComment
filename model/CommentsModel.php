@@ -21,6 +21,11 @@ class CommentsModel
         $this->db = Application::$app->db;
     }
 
+    /**
+     * Returns all comments from database.
+     *
+     * @return array|false
+     */
     public function getComments()
     {
         $this->db->query('SELECT comments.body, comments.created_at, users.name FROM comments INNER JOIN users
