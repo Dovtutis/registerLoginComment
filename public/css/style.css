@@ -91,6 +91,29 @@
     line-height: 70px;
 }
 
+@media only screen and (max-width: 991px) {
+    .container-fluid {
+        width: 300px;
+        margin-left: 1rem;
+    }
+
+    #navbarNav {
+        background-color: rgba(176, 175, 175, 0.9);
+    }
+
+    .nav-link {
+        color: #f5eeee !important;
+        font-weight: 600 !important;
+        font-size: 16px;
+        margin-left: 3rem;
+        transition: .3s;
+    }
+
+    .nav-link:hover {
+        transform: scale(.98);
+    }
+}
+
 @media only screen and (max-width: 700px) {
     .service-card p {
         font-size: 12px;

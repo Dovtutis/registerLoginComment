@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                     <div class="navbar-nav mr-auto">
                         <a class="nav-link" href="/">Home</a>
-                        <a class="nav-link" href="#">Reviews</a>
+                        <a class="nav-link" href="/feedback">Feedback</a>
                     </div>
                     <div class="navbar-nav ml-auto">
                         <a class="nav-link" href="/register">Register</a>
