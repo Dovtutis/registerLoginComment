@@ -23,7 +23,7 @@ $app->router->get('/', [SiteController::class, 'index']);
 
 $app->router->get('/feedback', [FeedbackController::class, 'index']);
 $app->router->get('/feedback/getComments', [FeedbackController::class, 'getComments']);
-$app->router->post('/feedback', [FeedbackController::class, 'addComment']);
+$app->router->post('/feedback/addComment', [FeedbackController::class, 'addComment']);
 
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
