@@ -56,8 +56,8 @@ class AuthController extends Controller
         if ($request->isPost()) :
             $data = $request->getBody();
 
-            $data['errors']['nameError'] = $this->validation->validateNameSurname($data['name']);
-            $data['errors']['surnameError'] = $this->validation->validateNameSurname($data['surname']);
+            $data['errors']['nameError'] = $this->validation->validateNameSurname($data['name'], "Please Enter Your Name");
+            $data['errors']['surnameError'] = $this->validation->validateNameSurname($data['surname'], "Please Enter Your Surname");
             $data['errors']['emailError'] = $this->validation->validateEmail($data['email'], $this->userModel);
             $data['errors']['passwordError'] = $this->validation->validatePassword($data['password']);
             $data['errors']['passwordConfirmError'] = $this->validation->confirmPassword($data['passwordConfirm']);

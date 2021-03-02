@@ -39,9 +39,9 @@ class Validation
      * @param $field
      * @return string
      */
-    public function validateNameSurname($field)
+    public function validateNameSurname($field, $message)
     {
-        if (empty($field)) return "Field Cannot Be Empty";
+        if (empty($field)) return $message;
         if (!preg_match("/^[a-z ,.'-ĄČĘĖĮŠŲŪŽ]+$/i", $field)) return "Field Must Contain Only Letters";
         if (preg_match('/[0-9]+/', $field)) return "Numbers Are Not Allowed";
         if (strlen($field)>40) return "Max Symbol Count 40";
