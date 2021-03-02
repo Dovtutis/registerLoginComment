@@ -1,4 +1,5 @@
 <?php
+use \app\core\html\FormField;
 ?>
 
 <div class="row">
@@ -6,18 +7,8 @@
         <div class="card card-body bd-light mt-5 p-4 container800" id="login-container">
             <h2>Login</h2>
             <form action="" method="post" autocomplete="off" id="login-form">
-                <div class="form-group mt-1">
-                    <label for="email">Email: <sup>*</sup></label>
-                    <input type="text" class="form-control form-control-lg mt-1"
-                           name="email" id="email" value="">
-                    <span class="invalid-feedback"></span>
-                </div>
-                <div class="form-group mt-1">
-                    <label for="password">Password: <sup>*</sup></label>
-                    <input type="password" class="form-control form-control-lg mt-1"
-                           name="password" id="password" value="">
-                    <span class="invalid-feedback"></span>
-                </div>
+                <?php echo new FormField('email', 'email', '', 'Email', 'text', '*', $params) ;?>
+                <?php echo new FormField('password', 'password', '', 'Password', 'password', '*', $params) ;?>
                 <div class="row mt-3">
                     <div class="col">
                         <input type="submit" value="Login" class="btn btn-primary btn-block">

@@ -31,10 +31,26 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         if ($request->isGet()) :
-            $params = [
-                'currentPage' => "register"
+            $data = [
+                'name' => '',
+                'surname' => '',
+                'email' => '',
+                'password' => '',
+                'confirmPassword' => '',
+                'phone' => '',
+                'address' => '',
+                'errors' => [
+                    'nameError' => '',
+                    'surnameError' => '',
+                    'emailError' => '',
+                    'passwordError' => '',
+                    'passwordConfirmError' => '',
+                    'phoneError' => '',
+                    'addressError' => ''
+                ],
+                'currentPage' => 'register'
             ];
-            return $this->render('register', $params);
+            return $this->render('register', $data);
         endif;
 
         if ($request->isPost()) :
@@ -75,17 +91,23 @@ class AuthController extends Controller
 
         if ($request->isGet()) :
             if (\app\core\Session::isUserLoggedIn()){
-                $params = [
+                $data = [
                     'currentPage' => "home"
                 ];
-                return $this->render('index', $params);
+                return $this->render('index', $data);
             }else{
-                $params = [
-                    'currentPage' => "login"
+                $data = [
+                    'name' => '',
+                    'email' => '',
+                    'password' => '',
+                    'errors' => [
+                        'emailError' => '',
+                        'passwordError' => '',
+                    ],
+                    'currentPage' => 'login'
                 ];
-                return $this->render('login', $params);
+                return $this->render('login', $data);
             }
-
         endif;
 
         if ($request->isPost()) :

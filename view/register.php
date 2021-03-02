@@ -1,4 +1,6 @@
-<?php ?>
+<?php
+use \app\core\html\FormField;
+?>
 
     <div class="row">
         <div class="col-lg-6 mx-auto">
@@ -6,48 +8,13 @@
                 <h2>Create an account</h2>
                 <p>Please fill in the form to register with us</p>
                 <form action="" method="post" autocomplete="off" id="registration-form">
-                    <div class="form-group">
-                        <label for="name">Name: <sup>*</sup></label>
-                        <input type="text" class="form-control form-control-lg"
-                               name="name" id="name" value="">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="surname">Surname: <sup>*</sup></label>
-                        <input type="text" class="form-control form-control-lg"
-                               name="surname" id="surname" value="">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="email">Email: <sup>*</sup></label>
-                        <input type="text" class="form-control form-control-lg"
-                               name="email" id="email" value="">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="password">Password: <sup>*</sup></label>
-                        <input type="password" class="form-control form-control-lg"
-                               name="password" id="password" value="">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="password-confirm">Password Confirm: <sup>*</sup></label>
-                        <input type="password" class="form-control form-control-lg"
-                               name="passwordConfirm" id="passwordConfirm" value="">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="phone">Phone number: </label>
-                        <input type="text" class="form-control form-control-lg"
-                               name="phone" id="phone" value="">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="address">Address: </label>
-                        <input type="text" class="form-control form-control-lg"
-                               name="address" id="address" value="">
-                        <span class="invalid-feedback"></span>
-                    </div>
+                    <?php echo new FormField('name', 'name', '', 'Name', 'text', '*', $params) ;?>
+                    <?php echo new FormField('surname', 'surname', '', 'Surname', 'text', '*', $params) ;?>
+                    <?php echo new FormField('email', 'email', '', 'Email', 'text', '*', $params) ;?>
+                    <?php echo new FormField('password', 'password', '', 'Password', 'password', '*', $params) ;?>
+                    <?php echo new FormField('passwordConfirm', 'passwordConfirm', '', 'Password', 'password', '*', $params) ;?>
+                    <?php echo new FormField('phone', 'phone', '', 'Phone', 'text', '', $params) ;?>
+                    <?php echo new FormField('address', 'address', '', 'Address', 'text', '', $params) ;?>
                     <div class="row mt-3 d-flex">
                         <div class="col">
                             <input type="submit" class="btn btn-primary btn-block" value="Register" id="register-button">
