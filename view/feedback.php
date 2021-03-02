@@ -3,7 +3,7 @@
     <div class="container800" id="feedback-container">
         <div id="feedback-comments-container">
             <div class="col-12">
-                <h4 class="my-2">Comments</h4>
+                <h4 class="my-2">Feedback from our customers</h4>
                 <div id="comments" class="comment-container">
                     <table class="table table-borderless">
                         <thead>
