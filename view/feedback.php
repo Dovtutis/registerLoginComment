@@ -74,8 +74,9 @@
     fetchComments();
 
     function fetchComments(){
-        fetch('/feedback/getComments')
-            .then(resp => resp.json())
+        fetch('/feedback/getComments', {
+            method: 'post',
+    }).then(resp => resp.json())
             .then(data => {
                 generateComments(data)
             })
