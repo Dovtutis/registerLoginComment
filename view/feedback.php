@@ -39,7 +39,12 @@
                     </div>
                 </div>
             <?php else:?>
-                Want to comment? <a href="/register">Register</a>
+                <p id="feedback-log-in-message">
+                    Want to comment? <a href="/register">Register</a>
+                </p>
+                <div class="form-group mt-2">
+                    <textarea name="body" id="body" class="form-control" disabled placeholder="Add comment. Maximum 500 chars."></textarea>
+                </div>
             <?php endif;?>
         </div>
     </div>
