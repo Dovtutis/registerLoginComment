@@ -63,7 +63,6 @@
         fetch('/feedback/getComments')
             .then(resp => resp.json())
             .then(data => {
-                console.log(data);
                 generateComments(data)
             })
     }
@@ -92,9 +91,8 @@
             body: addCommentFormData
         }).then(resp => resp.json())
             .then(data => {
-                console.log(data)
-                if (data.success){
-
+                if (data === "commentAddedSuccessfully"){
+                    fetchComments();
                 }
                 if (data.errors){
                     handleErrors(data.errors);
