@@ -67,7 +67,6 @@ class AuthController extends Controller
      * @param Request $request
      * @return string|string[]
      */
-
     public function login(Request $request)
     {
 
@@ -122,6 +121,11 @@ class AuthController extends Controller
         $_SESSION['user_name'] = $userRow->name;
     }
 
+    /**
+     * Logout function handles logout and unsets destroys session.
+     *
+     * @param Request $request
+     */
     public function logout(Request $request)
     {
         if (\app\core\Session::isUserLoggedIn()){

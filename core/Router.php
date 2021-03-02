@@ -76,6 +76,11 @@ class Router
         $this->routes['post'][$path] = $callback;
     }
 
+    /**
+     * Resolve function sets path and method, params and callback
+     *
+     * @return string|string[]
+     */
     public function resolve(){
         $path = $this->request->getPath();
         $method = $this->request->method();
@@ -133,7 +138,6 @@ class Router
      * @param string $view
      * @return string|string[]
      */
-
     public function renderView(string $view, array $params = [])
     {
         $layout = $this->layoutContent();;
@@ -148,7 +152,6 @@ class Router
      *
      * @return false|string
      */
-
     protected function layoutContent()
     {
         if (isset(Application::$app->controller)):
@@ -169,7 +172,6 @@ class Router
      * @param $view
      * @return false|string
      */
-
     protected function pageContent($view, $params)
     {
         foreach ($params as $key => $value):

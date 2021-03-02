@@ -40,7 +40,7 @@ class UserModel
     }
 
     /**
-     * Register function which creates SQL query, binds params and executes the query.
+     * Register function which creates SQL query, binds params and executes the query for user registration.
      *
      * @param $data
      * @return bool
@@ -63,6 +63,13 @@ class UserModel
         }
     }
 
+    /**
+     * Login function which creates SQL query, binds params and executes the query for user login.
+     *
+     * @param $email
+     * @param $password
+     * @return false|mixed
+     */
     public function login($email, $password)
     {
         $this->db->query("SELECT * FROM users WHERE `email` = :email");

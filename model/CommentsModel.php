@@ -38,6 +38,12 @@ class CommentsModel
         return false;
     }
 
+    /**
+     * Adds comment to the database
+     *
+     * @param $data
+     * @return bool
+     */
     public function addComment($data)
     {
         $this->db->query("INSERT INTO comments (user_id, body) VALUES (:user_id, :body)");
