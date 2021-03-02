@@ -5,6 +5,7 @@ namespace app\controller;
 
 
 use app\core\Controller;
+use app\core\Request;
 use app\core\Validation;
 use app\model\CommentsModel;
 use app\model\UserModel;
@@ -26,7 +27,13 @@ class FeedbackController extends Controller
         $this->commentsModel = new CommentsModel();
     }
 
-    public function index (){
+    /**
+     * Index function for feedback page which gives params and returns render.
+     *
+     * @return string|string[]
+     */
+    public function index ()
+    {
         $params = [
             'name' => "Feedback Page",
             'currentPage' => "feedback"
@@ -34,10 +41,36 @@ class FeedbackController extends Controller
         return $this->render('feedback', $params);
     }
 
-    public function getComments() {
+    /**
+     * GetComments function which requests all comments from comments model.
+     */
+    public function getComments()
+    {
         $comments = $this->commentsModel->getComments();
 
         header('Content-Type: application/json');
         echo json_encode($comments);
+    }
+
+    public function addComment (Request $request)
+    {
+        $data = $request->getBody();
+
+        $data['errors']['nameError'] = $this->validation->validateEmpty($data['name'], 'Name cant be empty');
+        $data['errors']['bodyError'] = $this->validation->validateEmpty($data['body'], 'Please enter your comment');
+
+        if ($this->validation->ifEmptyArray($data['errors'])) {
+            $data['user_id'] = $_SESSION['user_id'];
+            if ($this->commentsModel->addComment($data)) {
+                $response = 'commentAddedSuccessfully';
+                header('Content-Type: application/json');
+                echo json_encode($response);
+            } else {
+                die('Something went wrong in adding user to DB');
+            }
+        } else {
+            header('Content-Type: application/json');
+            echo json_encode($data);
+        }
     }
 }
