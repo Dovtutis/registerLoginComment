@@ -84,16 +84,21 @@
 
     function generateComments(commentsArray){
         commentsTable.innerHTML = '';
-        commentsArray.forEach(comment => {
-            commentsTable.innerHTML +=
+        commentsArray.forEach((comment, index) => {
+            printCommentHTML(comment)
+            // setTimeout(printCommentHTML, (index * 300), comment)
+        });
+    }
+
+    function printCommentHTML(comment){
+        commentsTable.innerHTML +=
                 `
-                 <tr>
+                 <tr class="comment-row">
                     <td>${comment.name}</td>
                     <td>${comment.body}</td>
                     <td>${comment.created_at}</td>
                  </tr>
                 `
-        });
     }
 
     function addCommentAsync(event){
