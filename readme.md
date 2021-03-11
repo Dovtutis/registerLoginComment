@@ -26,26 +26,26 @@ Functional tasks
 1. create mysql database
 1. Create table 'users' in database
 
-CREATE TABLE `users (
-    id int(11) NOT NULL AUTO_INCREMENT,
-    name varchar(60) NOT NULL,
-    surname varchar(60) NOT NULL,
-    email varchar(60) NOT NULL,
-    password varchar(60) NOT NULL,
-    phone varchar(60) DEFAULT NULL,
-    address varchar(60) DEFAULT NULL,
-    PRIMARY KEY (id)
-    ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;`
+CREATE TABLE `users` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`name` varchar(60) NOT NULL,
+`surname` varchar(60) NOT NULL,
+`email` varchar(60) NOT NULL,
+`password` varchar(60) NOT NULL,
+`phone` varchar(60) DEFAULT NULL,
+`address` varchar(60) DEFAULT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8
 
-CREATE TABLE `comments (
-    comment_id int(11) NOT NULL AUTO_INCREMENT,
-    user_id int(11) NOT NULL,
-    body text NOT NULL,
-    created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (comment_id),
-    KEY comment to user constraint (user_id),
-    CONSTRAINT comment to user constraint FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE NO ACTION ON UPDATE NO ACTION
-    ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;`
+CREATE TABLE `comments` (
+`comment_id` int(11) NOT NULL AUTO_INCREMENT,
+`user_id` int(11) NOT NULL,
+`body` text NOT NULL,
+`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+PRIMARY KEY (`comment_id`),
+KEY `comment to user constraint` (`user_id`),
+CONSTRAINT `comment to user constraint` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8
 
 1. copy .env_example to .env
     1. change db name
