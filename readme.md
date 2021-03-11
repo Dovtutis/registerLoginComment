@@ -17,7 +17,7 @@ Technical tasks which were accomplished in this project
 Functional tasks
 
 - Registration and login with validation.
-- Google Maps map was implemented.
+- Google Maps map implementattion.
 - Feedback page where registered user can leave his feedback.
 
 ## How to set it up
