@@ -26,9 +26,12 @@
                         <a class="nav-link" href="/feedback" id="nav-feedback">Feedback</a>
                     </div>
                     <div class="navbar-nav ml-auto">
+                        <?php if(!\app\core\Session::isUserLoggedIn()): ?>
                         <a class="nav-link" href="/register" id="nav-register">Register</a>
                         <a class="nav-link" href="/login" id="nav-login">Login</a>
+                        <?php else : ?>
                         <a class="nav-link" href="/logout">Logout</a>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>
