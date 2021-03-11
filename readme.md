@@ -37,6 +37,8 @@ CREATE TABLE `users` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8
 
+1. Create table 'comments' in database
+
 CREATE TABLE `comments` (
 `comment_id` int(11) NOT NULL AUTO_INCREMENT,
 `user_id` int(11) NOT NULL,
