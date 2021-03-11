@@ -1,7 +1,7 @@
 # Register / Login / Leave feedback 
 
 Simple webpage with possibility to register an account, login and leave a feedback. This task was 
-a final PHP task for Full Stack Junior WEB Developer studies (T43061303). Design was in documentation... :)
+a final PHP task for Full Stack Junior WEB Developer studies (T43061303). PS design was given in documentation... :)
 
 Technical tasks which were accomplished in this project
 
