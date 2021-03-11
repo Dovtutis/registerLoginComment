@@ -37,7 +37,7 @@ CREATE TABLE `users` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8
 
-1. Create table 'comments' in database
+4. Create table 'comments' in database
 
 CREATE TABLE `comments` (
 `comment_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -49,7 +49,7 @@ KEY `comment to user constraint` (`user_id`),
 CONSTRAINT `comment to user constraint` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8
 
-1. copy .env_example to .env
+1. Change .env file
     1. change db name
     1. change db user
     1. change gb password
